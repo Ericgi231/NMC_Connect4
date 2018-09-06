@@ -11,5 +11,6 @@ namespace Bears_ConnectFour
         public int Id { get; set; }
         public ConsoleColor Color { get; set; }
         public char Icon { get; set; }
+        public bool IsComputer { get; set; }
     }
 }

@@ -8,5 +8,19 @@ namespace Bears_ConnectFour
 {
     class ConsoleView
     {
+        #region properties
+
+        #endregion
+
+        #region constructors
+        public ConsoleView()
+        {
+
+        }
+        #endregion
+
+        #region methods
+
+        #endregion
     }
 }

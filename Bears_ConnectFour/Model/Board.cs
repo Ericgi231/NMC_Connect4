@@ -21,7 +21,8 @@ namespace Bears_ConnectFour
             {
                 for (int c = 0; c < Grid.GetLength(1); c++)
                 {
-                    Console.Write(Grid[r,c]);
+                    Console.ForegroundColor = Grid[r, c].Color;
+                    Console.Write(Grid[r,c].Icon);
                 }
                 Console.WriteLine();
             }
@@ -37,7 +38,7 @@ namespace Bears_ConnectFour
             {
                 for (int c = 0; c < Grid.GetLength(1); c++)
                 {
-                    Grid[r, c] = new Piece { Id = 0};
+                    Grid[r, c] = new Piece { Id = 0, Icon='O',Color=ConsoleColor.Red};
                 }
             }
         }
@@ -48,7 +49,7 @@ namespace Bears_ConnectFour
         /// <returns>winning Pieces id</returns>
         public int CheckWin()
         {
-
+            //add code to determine winner
 
             return 1;
         }
