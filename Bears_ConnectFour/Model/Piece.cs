@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Bears_ConnectFour
 {
-    class Program
+    class Piece
     {
-        static void Main(string[] args)
-        {
-            Controller controller = new Controller();
-        }
+        public int Id { get; set; }
+        public ConsoleColor Color { get; set; }
+        public char Icon { get; set; }
     }
 }

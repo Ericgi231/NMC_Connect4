@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Bears_ConnectFour
 {
-    class Program
+    class Controller
     {
-        static void Main(string[] args)
+        public Controller()
         {
-            Controller controller = new Controller();
+            Board _board = new Board();
+            _board.PrintGrid();
+            Console.ReadLine();
         }
+        
+
     }
 }

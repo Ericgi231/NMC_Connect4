@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bears_ConnectFour
 {
-    class Program
+    class ConsoleView
     {
-        static void Main(string[] args)
-        {
-            Controller controller = new Controller();
-        }
     }
 }
