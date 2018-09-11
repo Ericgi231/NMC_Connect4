@@ -44,8 +44,8 @@ namespace Bears_ConnectFour
                 p = new Piece()
                 {
                     Id = i
-                    
-                }   
+
+                };
                 _pieces.Add(p);
             }
         }
