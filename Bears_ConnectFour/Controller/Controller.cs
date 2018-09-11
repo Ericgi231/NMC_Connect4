@@ -38,6 +38,7 @@ namespace Bears_ConnectFour
 
         private void InstantiatePieces(int players)
         {
+            _pieces = new List<Piece>();
             Piece p;
             for (int i = 0; i < players; i++)
             {
