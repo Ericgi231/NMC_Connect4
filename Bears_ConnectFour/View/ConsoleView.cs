@@ -20,7 +20,18 @@ namespace Bears_ConnectFour
         #endregion
 
         #region methods
-
+        public void PrintGrid(Board board)
+        {
+            for (int r = 0; r < board.Grid.GetLength(0); r++)
+            {
+                for (int c = 0; c < board.Grid.GetLength(1); c++)
+                {
+                    Console.ForegroundColor = board.Grid[r, c].Color;
+                    Console.Write(board.Grid[r, c].Icon);
+                }
+                Console.WriteLine();
+            }
+        }
         #endregion
     }
 }

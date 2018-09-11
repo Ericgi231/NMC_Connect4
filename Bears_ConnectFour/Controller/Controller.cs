@@ -10,22 +10,30 @@ namespace Bears_ConnectFour
     {
         #region properties
         private Board _board { get; set; }
-        private List<Piece> _pieces { get; set; }
+        private Piece[] _pieces { get; set; }
         private Config _config { get; set; }
+        private ConsoleView _view { get; set; }
 
         #endregion
 
         #region constructors
         public Controller()
         {
+            InstantiateView();
             InstantiateConfig();
             InstantiateBoard();
-            InstantiatePieces(_config.Players);
+            InstantiatePieces(_config);
+            _view.PrintGrid(_board);
             Console.ReadLine();
         }
         #endregion
 
         #region methods
+        private void InstantiateView()
+        {
+            _view = new ConsoleView();
+        }
+
         private void InstantiateConfig()
         {
             _config = new Config();
@@ -36,18 +44,18 @@ namespace Bears_ConnectFour
             _board = new Board();
         }
 
-        private void InstantiatePieces(int players)
+        private void InstantiatePieces(Config c)
         {
-            _pieces = new List<Piece>();
-            Piece p;
-            for (int i = 0; i < players; i++)
+            _pieces = new Piece[c.Players];
+            for (int i = 0; i < c.Players; i++)
             {
-                p = new Piece()
+                _pieces[i] = new Piece()
                 {
-                    Id = i
-
+                    Id = i,
+                    Color = c.Colors[i],
+                    Icon = c.Icons[i],
+                    IsComputer = c.IsComputer[i]
                 };
-                _pieces.Add(p);
             }
         }
 
