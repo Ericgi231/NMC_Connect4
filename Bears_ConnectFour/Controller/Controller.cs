@@ -20,7 +20,7 @@ namespace Bears_ConnectFour
         {
             InstantiateConfig();
             InstantiateBoard();
-            InstantiatePieces(2);
+            InstantiatePieces(_config.Players);
             Console.ReadLine();
         }
         #endregion

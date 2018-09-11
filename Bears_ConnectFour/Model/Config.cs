@@ -10,12 +10,50 @@ namespace Bears_ConnectFour
     {
         #region properties
         public int Players { get; set; }
+        public ConsoleColor[] Colors { get; set; } 
+        public Char[] Icons { get; set; }
+        public Boolean[] IsComputer { get; set; }
         #endregion
 
         #region constructors
         public Config()
         {
+            SetDefaultConfig();
+        }
+        #endregion
 
+        #region methods
+        /// <summary>
+        /// sets the default config settings
+        /// </summary>
+        private void SetDefaultConfig()
+        {
+            Players = 2;
+            Colors = new ConsoleColor[2] { ConsoleColor.Red, ConsoleColor.Blue};
+            Icons = new Char[2] { 'O', 'X'};
+            IsComputer = new Boolean[2] { false, false};
+        }
+
+        /// <summary>
+        /// changes the config to user set settings
+        /// </summary>
+        /// <param name="players">ammount of players in game</param>
+        public void SetNewConfig(int players)
+        {
+            Players = players;
+            Colors = new ConsoleColor[Players];
+            Icons = new Char[Players];
+            IsComputer = new Boolean[Players];
+        }
+
+        /// <summary>
+        /// adds a new player to the config
+        /// </summary>
+        public void EditPlayer(int id, ConsoleColor color, Char icon, Boolean isComputer)
+        {
+            Colors[id] = color;
+            Icons[id] = icon;
+            IsComputer[id] = isComputer;
         }
         #endregion
     }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Bears_ConnectFour
 {
-    class Piece
+    public struct Piece
     {
-        public int Id { get; set; }
-        public ConsoleColor Color { get; set; }
-        public char Icon { get; set; }
-        public bool IsComputer { get; set; }
+        public int Id;
+        public ConsoleColor Color;
+        public char Icon;
+        public bool IsComputer;
     }
 }

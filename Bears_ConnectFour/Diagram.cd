@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Bears_ConnectFour.Controller" Collapsed="true">
+    <Position X="2.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYIAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Controller\Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bears_ConnectFour.Board" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAABAIAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Board.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bears_ConnectFour.Config" Collapsed="true">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAAAAACAAAAAAAAAAAAAgEAAAAAgAgAAAAAA=</HashCode>
+      <FileName>Model\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bears_ConnectFour.ConsoleView" Collapsed="true">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ConsoleView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Bears_ConnectFour.Piece" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAAA=</HashCode>
+      <FileName>Model\Piece.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
