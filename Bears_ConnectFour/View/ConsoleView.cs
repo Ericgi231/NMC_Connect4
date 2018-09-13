@@ -15,7 +15,7 @@ namespace Bears_ConnectFour
         #region constructors
         public ConsoleView()
         {
-
+            Console.CursorVisible = false;
         }
         #endregion
 
@@ -35,7 +35,16 @@ namespace Bears_ConnectFour
 
         public void PrintMenu(string title, List<Enums.MenuOption> options, int pointer)
         {
-
+            Console.Clear();
+            Console.WriteLine(title+"\n");
+            Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+            for (int i = 0; i < options.Count; i++)
+            {
+                if (i == pointer)
+                    Console.WriteLine("> " + options[i]);
+                else
+                    Console.WriteLine(" " + options[i]);
+            }
         }
         #endregion
     }

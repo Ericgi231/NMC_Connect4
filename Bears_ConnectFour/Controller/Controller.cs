@@ -22,8 +22,6 @@ namespace Bears_ConnectFour
             InstantiateView();
             InstantiateConfig();
             InstantiateBoard();
-            InstantiatePieces(_config);
-            _view.PrintGrid(_board);
             MainMenu();
         }
         #endregion
@@ -103,6 +101,10 @@ namespace Bears_ConnectFour
                     default:
                         break;
                 }
+                if (pointer < 0)
+                    pointer = options.Count() - 1;
+                else if (pointer > options.Count() - 1)
+                    pointer = 0;
             }
         }
 
