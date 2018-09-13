@@ -24,7 +24,7 @@ namespace Bears_ConnectFour
             InstantiateBoard();
             InstantiatePieces(_config);
             _view.PrintGrid(_board);
-            Console.ReadLine();
+            MainMenu();
         }
         #endregion
 
@@ -79,13 +79,30 @@ namespace Bears_ConnectFour
             string title = "Connect 4\nBy: Eric Grant, Kevin Stout, Connor Hansen";
             List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.START, Enums.MenuOption.OPTIONS, Enums.MenuOption.EXIT};
             int pointer = 0;
+            ConsoleKeyInfo key;
             while (alive)
             {
                 _view.PrintMenu(title,options,pointer);
-
-                
-
-                Console.ReadKey();
+                key = Console.ReadKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        pointer--;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        pointer++;
+                        break;
+                    case ConsoleKey.RightArrow:
+                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.Enter:
+                        //add code to process menu option selected here
+                        break;
+                    case ConsoleKey.Escape:
+                        alive=false;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
