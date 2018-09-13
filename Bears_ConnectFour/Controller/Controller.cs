@@ -24,26 +24,39 @@ namespace Bears_ConnectFour
             InstantiateBoard();
             InstantiatePieces(_config);
             _view.PrintGrid(_board);
-            Console.ReadLine();
+            MainMenu();
         }
         #endregion
 
         #region methods
+        /// <summary>
+        /// build the view
+        /// </summary>
         private void InstantiateView()
         {
             _view = new ConsoleView();
         }
 
+        /// <summary>
+        /// build the config class
+        /// </summary>
         private void InstantiateConfig()
         {
             _config = new Config();
         }
 
+        /// <summary>
+        /// build the board
+        /// </summary>
         private void InstantiateBoard()
         {
             _board = new Board();
         }
 
+        /// <summary>
+        /// build the pieces used in the current game
+        /// </summary>
+        /// <param name="c">the config class to draw piece settings from</param>
         private void InstantiatePieces(Config c)
         {
             _pieces = new Piece[c.Players];
@@ -59,7 +72,40 @@ namespace Bears_ConnectFour
             }
         }
 
-        //main menu 
+        
+        private void MainMenu()
+        {
+            Boolean alive = true;
+            string title = "Connect 4\nBy: Eric Grant, Kevin Stout, Connor Hansen";
+            List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.START, Enums.MenuOption.OPTIONS, Enums.MenuOption.EXIT};
+            int pointer = 0;
+            ConsoleKeyInfo key;
+            while (alive)
+            {
+                _view.PrintMenu(title,options,pointer);
+                key = Console.ReadKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        pointer--;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        pointer++;
+                        break;
+                    case ConsoleKey.RightArrow:
+                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.Enter:
+                        //add code to process menu option selected here
+                        break;
+                    case ConsoleKey.Escape:
+                        alive=false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         //calls game loop
         //calls options screen
         //calls stats
