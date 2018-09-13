@@ -32,6 +32,11 @@ namespace Bears_ConnectFour
                 Console.WriteLine();
             }
         }
+
+        public void PrintMenu(string title, List<Enums.MenuOption> options, int pointer)
+        {
+
+        }
         #endregion
     }
 }
