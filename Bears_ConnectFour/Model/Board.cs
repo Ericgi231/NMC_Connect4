@@ -32,13 +32,188 @@ namespace Bears_ConnectFour
 
         /// <summary>
         /// determine if a player won the game
+        /// Function will return an Id of the winning player, or 0 if the move was not a winning move
         /// </summary>
         /// <returns>winning Pieces id</returns>
-        public int CheckWin()
+        public int CheckWin(int pieceRow, int pieceCol, Piece[,] grid)
         {
-            //add code to determine winner
+            int idToMatch = grid[pieceRow, pieceCol].Id;
+            int matchingPieces = 1;
+            bool win = false;
 
-            return 1;
+            // TODO create function to dynamically pull grid upper/lower bound for bound check
+
+
+            //
+            // Next check up/right (increment row and increment column)
+            //
+            for (int counter = 1; counter < 4; counter++)
+            {
+                var row = pieceRow + counter;
+                var col = pieceCol + counter;
+
+                // Bound check
+                if (row > grid.GetLength(0) || col > grid.GetLength(1)) { break; }
+
+                // Check for a match
+                if (grid[row, col].Id == idToMatch)
+                {
+                    matchingPieces++;
+                    if (matchingPieces == 4) return idToMatch;
+                }
+                else { break; }
+            }
+
+            //
+            // Check down/right - (decrement row and increment col)
+            //
+            for (int counter = 1; counter < 4; counter++)
+            {
+                var row = pieceRow - counter;
+                var col = pieceCol + counter;
+
+                // Make sure we stay within our board
+                if (row > grid.GetLength(0) || col > grid.GetLength(1)) { break; }
+
+                // Check for a match
+                if (grid[row, col].Id == idToMatch)
+                {
+                    matchingPieces++;
+                    if (matchingPieces == 4) return idToMatch;
+                }
+                else { break; }
+            }
+
+            //
+            // Check down/left - (decrement row and decrement column)
+            //
+            for (int counter = 1; counter < 4; counter++)
+            {
+                var row = pieceRow - counter;
+                var col = pieceCol - counter;
+
+                // Make sure we stay within our board
+                if (row > grid.GetLength(0) || col < 0) { break; }
+
+                // Check for a match
+                if (grid[row, col].Id == idToMatch)
+                {
+                    matchingPieces++;
+                    if (matchingPieces == 4) return idToMatch;
+                }
+                else { break; }
+            }
+
+            //
+            // Next check up/left (increment row and decrement column)
+            //
+            for (int counter = 1; counter < 4; counter++)
+            {
+                var row = pieceRow + counter;
+                var col = pieceCol - counter;
+
+                // Make sure we stay within our board
+                if (row < 0 || col < 0) { break; }
+
+                // Check for a match
+                if (grid[row, col].Id == idToMatch)
+                {
+                    matchingPieces++;
+                    if (matchingPieces == 4) return idToMatch;
+                }
+                else { break; }
+            }
+
+            //
+            // Check Up
+            //
+            for (int counter = 0; counter < 4; counter++)
+            {
+                var row = pieceRow - counter;
+                var col = pieceCol;
+
+                // Bound check
+                if (row < 0) { break; }
+
+                // Check for a match
+                if (grid[row, col].Id == idToMatch)
+                {
+                    matchingPieces++;
+                    if (matchingPieces == 4) return idToMatch;
+                }
+                else { break; }
+
+            }
+
+            //
+            // Check Down
+            //
+            for (int counter = 0; counter < 4; counter++)
+            {
+                var row = pieceRow + counter;
+                var col = pieceCol;
+
+                // Bound check
+                if (row > grid.GetLength(0)) { break; }
+
+                // Check for a match
+                if (grid[row, col].Id == idToMatch)
+                {
+                    matchingPieces++;
+                    if (matchingPieces == 4) return idToMatch;
+                }
+                else { break; }
+            }
+
+            //
+            // Check Left
+            //
+            for (int counter = 0; counter < 4; counter++)
+            {
+                var row = pieceRow;
+                var col = pieceCol - counter;
+
+                // Bound check
+                if (col < 0) { break; }
+
+                // Check for a match
+                if (grid[row, col].Id == idToMatch)
+                {
+                    matchingPieces++;
+                    if (matchingPieces == 4) return idToMatch;
+                }
+                else { break; }
+            }
+
+            //
+            // Check Right
+            //
+            for (int counter = 0; counter < 4; counter++)
+            {
+                var row = pieceRow;
+                var col = pieceCol + counter;
+
+                // Bound check
+                if (col > grid.GetLength(1)) { break; }
+
+                // Check for a match
+                if (grid[row, col].Id == idToMatch)
+                {
+                    matchingPieces++;
+                    if (matchingPieces == 4) return idToMatch;
+                }
+                else { break; }
+            }
+
+
+            if (win == true)
+            {
+                return idToMatch;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }
