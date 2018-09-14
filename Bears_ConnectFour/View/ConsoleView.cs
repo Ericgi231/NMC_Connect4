@@ -8,7 +8,10 @@ namespace Bears_ConnectFour
 {
     class ConsoleView
     {
+        const string TITLE = "  Connect 4    By: Eric Grant, Kevin Stout, Connor Hansen";
+
         #region properties
+        
 
         #endregion
 
@@ -16,10 +19,44 @@ namespace Bears_ConnectFour
         public ConsoleView()
         {
             Console.CursorVisible = false;
+
         }
         #endregion
 
-        #region methods
+        #region methods        
+        
+        public void PrintSplashScreen(){
+            Console.WriteLine(TITLE);
+            Console.WriteLine();
+            Console.WriteLine("This application is designed to allow two players to play ");
+            Console.WriteLine("a game of connect 4. The rules are the standard rules for the ");
+            Console.WriteLine("game with each player taking a turn.");
+            Console.WriteLine();
+            PrintContinuePrompt();
+        }
+
+        public void PrintContinuePrompt(){
+            Console.CursorVisible = false;
+            Console.WriteLine();
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+
+            
+            
+        }
+
+        public void PrintExitPrompt(){
+            Console.Clear();
+            Console.WriteLine(TITLE);
+            Console.CursorVisible = false;
+            Console.WriteLine();
+            Console.WriteLine("Thank you for playing. Press any key to exit");
+            Console.ReadKey();
+
+            System.Environment.Exit(1);
+            
+        }
+
         public void PrintGrid(Board board)
         {
             for (int r = 0; r < board.Grid.GetLength(0); r++)
@@ -33,10 +70,11 @@ namespace Bears_ConnectFour
             }
         }
 
-        public void PrintMenu(string title, List<Enums.MenuOption> options, int pointer)
+        public void PrintMenu(List<Enums.MenuOption> options, int pointer)
         {
             Console.Clear();
-            Console.WriteLine(title+"\n");
+            Console.WriteLine(TITLE);
+            Console.WriteLine();
             Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
             for (int i = 0; i < options.Count; i++)
             {
@@ -45,6 +83,23 @@ namespace Bears_ConnectFour
                 else
                     Console.WriteLine(" " + options[i]);
             }
+        }
+
+        public void PrintOptionMenu(){
+
+        }
+
+        public void DrawLoop(int count){
+            
+            Console.Clear();
+
+            Console.WriteLine(TITLE);
+
+            Console.WriteLine("hello " + count);
+            
+            Console.ReadKey();
+
+            
         }
         #endregion
     }

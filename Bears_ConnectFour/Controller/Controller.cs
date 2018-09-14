@@ -22,11 +22,15 @@ namespace Bears_ConnectFour
             InstantiateView();
             InstantiateConfig();
             InstantiateBoard();
+            SplashScreen();
             MainMenu();
         }
         #endregion
 
         #region methods
+
+
+
         /// <summary>
         /// build the view
         /// </summary>
@@ -70,17 +74,21 @@ namespace Bears_ConnectFour
             }
         }
 
+        private void SplashScreen(){
+            _view.PrintSplashScreen();
+
+        }
         
+  
         private void MainMenu()
         {
-            Boolean alive = true;
-            string title = "Connect 4\nBy: Eric Grant, Kevin Stout, Connor Hansen";
+            Boolean alive = true;            
             List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.START, Enums.MenuOption.OPTIONS, Enums.MenuOption.EXIT};
             int pointer = 0;
             ConsoleKeyInfo key;
             while (alive)
-            {
-                _view.PrintMenu(title,options,pointer);
+            {                
+                _view.PrintMenu(options,pointer);
                 key = Console.ReadKey();
                 switch (key.Key)
                 {
@@ -92,8 +100,31 @@ namespace Bears_ConnectFour
                         break;
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.Spacebar:
+                        if(pointer == 0){
+                            GameLoop();
+                        }
+                        else if(pointer == 1)
+	                    {
+                            _view.PrintOptionMenu();
+	                    }
+                        else if(pointer == 2)
+                        {
+                            _view.PrintExitPrompt();
+                        }
+                        break;
                     case ConsoleKey.Enter:
                         //add code to process menu option selected here
+                        if(pointer == 0){
+                            GameLoop();
+                        }
+                        else if(pointer == 1)
+	                    {
+                            _view.PrintOptionMenu();
+	                    }
+                        else if(pointer == 2)
+                        {
+                            _view.PrintExitPrompt();
+                        }
                         break;
                     case ConsoleKey.Escape:
                         alive=false;
@@ -109,6 +140,18 @@ namespace Bears_ConnectFour
         }
 
         //calls game loop
+        private void GameLoop(){
+            bool win = false;
+            int loopCount = 0;
+
+            while (!win)
+	        {
+                _view.DrawLoop(loopCount);
+
+                loopCount++;
+	        }
+            
+        }
         //calls options screen
         //calls stats
 
