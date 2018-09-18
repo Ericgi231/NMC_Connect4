@@ -52,7 +52,7 @@ namespace Bears_ConnectFour
         /// </summary>
         private void InstantiateBoard()
         {
-            _board = new Board();
+            _board = new Board(_config.BoardSize[0], _config.BoardSize[1]);
         }
 
         /// <summary>
@@ -74,12 +74,17 @@ namespace Bears_ConnectFour
             }
         }
 
+        /// <summary>
+        /// display the splash screen with instructions
+        /// </summary>
         private void SplashScreen(){
             _view.PrintSplashScreen();
 
         }
         
-  
+        /// <summary>
+        /// display the main menu
+        /// </summary>
         private void MainMenu()
         {
             Boolean alive = true;            
@@ -100,18 +105,6 @@ namespace Bears_ConnectFour
                         break;
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.Spacebar:
-                        if(pointer == 0){
-                            GameLoop();
-                        }
-                        else if(pointer == 1)
-	                    {
-                            _view.PrintOptionMenu();
-	                    }
-                        else if(pointer == 2)
-                        {
-                            _view.PrintExitPrompt();
-                        }
-                        break;
                     case ConsoleKey.Enter:
                         //add code to process menu option selected here
                         if(pointer == 0){
@@ -127,7 +120,7 @@ namespace Bears_ConnectFour
                         }
                         break;
                     case ConsoleKey.Escape:
-                        alive=false;
+                        _view.PrintExitPrompt();
                         break;
                     default:
                         break;
@@ -139,27 +132,43 @@ namespace Bears_ConnectFour
             }
         }
 
+        /// <summary>
+        /// display options menu
+        /// </summary>
+        private void OptionsMenu()
+        {
+
+        }
+
+        /// <summary>
+        /// display stats Menu
+        /// </summary>
+        private void StatsMenu()
+        {
+
+        }
+
         //calls game loop
         private void GameLoop(){
             bool win = false;
-            int loopCount = 0;
+            int col = _config.BoardSize[0];
+            int playerTurn = 0;
+            //generate players
+            Piece[] player = new Piece[_config.Players];
+            for (int i = 0; i < player.Length; i++)
+            {
+                player[i].Id = i;
+                player[i].Icon = _config.Icons[i];
+                player[i].Color = _config.Colors[i];
+                player[i].IsComputer = _config.IsComputer[i];
+            }
 
+            //game loop
             while (!win)
 	        {
-                _view.DrawLoop(loopCount);
-
-                loopCount++;
+                _view.PrintBoard(_board,player[playerTurn]);
 	        }
-            
         }
-        //calls options screen
-        //calls stats
-
-        //options screen
-
-        //game loop
-
-        //stats
 
         #endregion
 

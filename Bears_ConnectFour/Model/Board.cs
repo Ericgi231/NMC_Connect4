@@ -10,17 +10,17 @@ namespace Bears_ConnectFour
     {
         public Piece[,] Grid { get; set; }
 
-        public Board()
+        public Board(int w, int h)
         {
-            InstantiateGrid();
+            InstantiateGrid(w, h);
         }
 
         /// <summary>
         /// fill the grid with blank spaces
         /// </summary>
-        private void InstantiateGrid()
+        private void InstantiateGrid(int w, int h)
         {
-            Grid = new Piece[6, 7];
+            Grid = new Piece[w, h];
             for (int r = 0; r < Grid.GetLength(0); r++)
             {
                 for (int c = 0; c < Grid.GetLength(1); c++)

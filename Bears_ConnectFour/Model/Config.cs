@@ -13,6 +13,7 @@ namespace Bears_ConnectFour
         public ConsoleColor[] Colors { get; set; } 
         public Char[] Icons { get; set; }
         public Boolean[] IsComputer { get; set; }
+        public int[] BoardSize { get; set; }
         #endregion
 
         #region constructors
@@ -32,6 +33,7 @@ namespace Bears_ConnectFour
             Colors = new ConsoleColor[2] { ConsoleColor.Red, ConsoleColor.Blue};
             Icons = new Char[2] { 'O', 'X'};
             IsComputer = new Boolean[2] { false, false};
+            BoardSize = new int[2] { 6, 7 };
         }
 
         /// <summary>

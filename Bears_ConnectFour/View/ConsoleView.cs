@@ -57,8 +57,12 @@ namespace Bears_ConnectFour
             
         }
 
-        public void PrintGrid(Board board)
+        public void PrintBoard(Board board, Piece player)
         {
+            //current piece location
+
+
+            //the game board
             for (int r = 0; r < board.Grid.GetLength(0); r++)
             {
                 for (int c = 0; c < board.Grid.GetLength(1); c++)
@@ -68,6 +72,9 @@ namespace Bears_ConnectFour
                 }
                 Console.WriteLine();
             }
+
+            //extra info
+
         }
 
         public void PrintMenu(List<Enums.MenuOption> options, int pointer)
