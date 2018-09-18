@@ -21,7 +21,7 @@ namespace Bears_ConnectFour
         {
             InstantiateView();
             InstantiateConfig();
-            InstantiateBoard();
+            
             SplashScreen();
             MainMenu();
         }
@@ -150,24 +150,26 @@ namespace Bears_ConnectFour
 
         //calls game loop
         private void GameLoop(){
+            InstantiateBoard();
             bool win = false;
+            int winnerId = -1;
             int col = 0;
             int playerTurn = 0;
             ConsoleKeyInfo key;
             //generate players
-            Piece[] player = new Piece[_config.Players];
-            for (int i = 0; i < player.Length; i++)
+            Piece[] players = new Piece[_config.Players];
+            for (int i = 0; i < players.Length; i++)
             {
-                player[i].Id = i;
-                player[i].Icon = _config.Icons[i];
-                player[i].Color = _config.Colors[i];
-                player[i].IsComputer = _config.IsComputer[i];
+                players[i].Id = i;
+                players[i].Icon = _config.Icons[i];
+                players[i].Color = _config.Colors[i];
+                players[i].IsComputer = _config.IsComputer[i];
             }
 
             //game loop
             while (!win)
 	        {
-                _view.PrintBoard(_board,col,player[playerTurn]);
+                _view.PrintBoard(_board,col,players[playerTurn]);
                 key = Console.ReadKey();
                 switch (key.Key)
                 {
@@ -181,7 +183,30 @@ namespace Bears_ConnectFour
                     case ConsoleKey.Enter:
                     case ConsoleKey.DownArrow:
                         //code for placing piece
-                        _board.Grid[6-1, col] = player[playerTurn];
+                        //place piece
+                        for (int i = _board.Grid.GetLength(0); i > 0; i--)
+                        {
+                            if (_board.Grid[i - 1, col].Id == -1)
+                            {
+                                _board.Grid[i - 1, col] = players[playerTurn];
+                                winnerId = _board.CheckWin(i - 1, col);
+                                break;
+                            }
+                        }
+
+                        //alter current turn
+                        if (winnerId == -1)
+                        {
+                            playerTurn++;
+                            if (playerTurn > players.Length - 1)
+                            {
+                                playerTurn = 0;
+                            }
+                        }
+                        else
+                        {
+                            win = true;
+                        }
                         break;
                     case ConsoleKey.Escape:
                         _view.PrintExitPrompt();
@@ -194,6 +219,11 @@ namespace Bears_ConnectFour
                 else if (col > _config.BoardWidth-1)
                     col = 0;
             }
+
+            //when winner
+            //go to stats screen with winnerId
+
+
         }
 
         #endregion

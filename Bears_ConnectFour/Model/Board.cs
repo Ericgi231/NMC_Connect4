@@ -16,18 +16,19 @@ namespace Bears_ConnectFour
         }
 
         /// <summary>
-        /// fill the grid with blank spaces
+        /// fill the Grid with blank spaces
         /// </summary>
         private void InstantiateGrid(int h, int w)
         {
+            Piece generic = new Piece { Id = -1, Icon = ' ', Color = ConsoleColor.White};
             Grid = new Piece[h, w];
-            //for (int r = 0; r < h; r++)
-            //{
-            //    for (int c = 0; c < w; c++)
-            //    {
-            //        Grid[r,c] = new Piece { Id = -1, Icon='N',Color=ConsoleColor.White};
-            //    }
-            //}
+            for (int r = 0; r < h; r++)
+            {
+                for (int c = 0; c < w; c++)
+                {
+                    Grid[r, c] = generic;
+                }
+            }
         }
 
         /// <summary>
@@ -35,13 +36,13 @@ namespace Bears_ConnectFour
         /// Function will return an Id of the winning player, or 0 if the move was not a winning move
         /// </summary>
         /// <returns>winning Pieces id</returns>
-        public int CheckWin(int pieceRow, int pieceCol, Piece[,] grid)
+        public int CheckWin(int pieceRow, int pieceCol)
         {
-            int idToMatch = grid[pieceRow, pieceCol].Id;
+            int idToMatch = Grid[pieceRow, pieceCol].Id;
             int matchingPieces = 1;
             bool win = false;
 
-            // TODO create function to dynamically pull grid upper/lower bound for bound check
+            // TODO create function to dynamically pull Grid upper/lower bound for bound check
 
 
             //
@@ -53,10 +54,10 @@ namespace Bears_ConnectFour
                 var col = pieceCol + counter;
 
                 // Bound check
-                if (row > grid.GetLength(0) || col > grid.GetLength(1)) { break; }
+                if (row > Grid.GetLength(0) -1 || col > Grid.GetLength(1) - 1) { break; }
 
                 // Check for a match
-                if (grid[row, col].Id == idToMatch)
+                if (Grid[row, col].Id == idToMatch)
                 {
                     matchingPieces++;
                     if (matchingPieces == 4) return idToMatch;
@@ -73,10 +74,10 @@ namespace Bears_ConnectFour
                 var col = pieceCol + counter;
 
                 // Make sure we stay within our board
-                if (row > grid.GetLength(0) || col > grid.GetLength(1)) { break; }
+                if (row > Grid.GetLength(0) || col > Grid.GetLength(1)) { break; }
 
                 // Check for a match
-                if (grid[row, col].Id == idToMatch)
+                if (Grid[row, col].Id == idToMatch)
                 {
                     matchingPieces++;
                     if (matchingPieces == 4) return idToMatch;
@@ -93,10 +94,10 @@ namespace Bears_ConnectFour
                 var col = pieceCol - counter;
 
                 // Make sure we stay within our board
-                if (row > grid.GetLength(0) || col < 0) { break; }
+                if (row > Grid.GetLength(0) || col < 0) { break; }
 
                 // Check for a match
-                if (grid[row, col].Id == idToMatch)
+                if (Grid[row, col].Id == idToMatch)
                 {
                     matchingPieces++;
                     if (matchingPieces == 4) return idToMatch;
@@ -116,7 +117,7 @@ namespace Bears_ConnectFour
                 if (row < 0 || col < 0) { break; }
 
                 // Check for a match
-                if (grid[row, col].Id == idToMatch)
+                if (Grid[row, col].Id == idToMatch)
                 {
                     matchingPieces++;
                     if (matchingPieces == 4) return idToMatch;
@@ -136,7 +137,7 @@ namespace Bears_ConnectFour
                 if (row < 0) { break; }
 
                 // Check for a match
-                if (grid[row, col].Id == idToMatch)
+                if (Grid[row, col].Id == idToMatch)
                 {
                     matchingPieces++;
                     if (matchingPieces == 4) return idToMatch;
@@ -154,10 +155,10 @@ namespace Bears_ConnectFour
                 var col = pieceCol;
 
                 // Bound check
-                if (row > grid.GetLength(0)) { break; }
+                if (row > Grid.GetLength(0) - 1) { break; }
 
                 // Check for a match
-                if (grid[row, col].Id == idToMatch)
+                if (Grid[row, col].Id == idToMatch)
                 {
                     matchingPieces++;
                     if (matchingPieces == 4) return idToMatch;
@@ -177,7 +178,7 @@ namespace Bears_ConnectFour
                 if (col < 0) { break; }
 
                 // Check for a match
-                if (grid[row, col].Id == idToMatch)
+                if (Grid[row, col].Id == idToMatch)
                 {
                     matchingPieces++;
                     if (matchingPieces == 4) return idToMatch;
@@ -194,10 +195,10 @@ namespace Bears_ConnectFour
                 var col = pieceCol + counter;
 
                 // Bound check
-                if (col > grid.GetLength(1)) { break; }
+                if (col > Grid.GetLength(1)) { break; }
 
                 // Check for a match
-                if (grid[row, col].Id == idToMatch)
+                if (Grid[row, col].Id == idToMatch)
                 {
                     matchingPieces++;
                     if (matchingPieces == 4) return idToMatch;
