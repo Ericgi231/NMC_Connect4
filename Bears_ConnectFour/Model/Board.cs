@@ -10,24 +10,24 @@ namespace Bears_ConnectFour
     {
         public Piece[,] Grid { get; set; }
 
-        public Board(int w, int h)
+        public Board(int h, int w)
         {
-            InstantiateGrid(w, h);
+            InstantiateGrid(h, w);
         }
 
         /// <summary>
         /// fill the grid with blank spaces
         /// </summary>
-        private void InstantiateGrid(int w, int h)
+        private void InstantiateGrid(int h, int w)
         {
-            Grid = new Piece[w, h];
-            for (int r = 0; r < Grid.GetLength(0); r++)
-            {
-                for (int c = 0; c < Grid.GetLength(1); c++)
-                {
-                    Grid[r, c] = new Piece { Id = -1, Icon=' ',Color=ConsoleColor.White};
-                }
-            }
+            Grid = new Piece[h, w];
+            //for (int r = 0; r < h; r++)
+            //{
+            //    for (int c = 0; c < w; c++)
+            //    {
+            //        Grid[r,c] = new Piece { Id = -1, Icon='N',Color=ConsoleColor.White};
+            //    }
+            //}
         }
 
         /// <summary>

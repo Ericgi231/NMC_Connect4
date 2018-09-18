@@ -52,7 +52,7 @@ namespace Bears_ConnectFour
         /// </summary>
         private void InstantiateBoard()
         {
-            _board = new Board(_config.BoardSize[0], _config.BoardSize[1]);
+            _board = new Board(_config.BoardHeight, _config.BoardWidth);
         }
 
         /// <summary>
@@ -151,8 +151,9 @@ namespace Bears_ConnectFour
         //calls game loop
         private void GameLoop(){
             bool win = false;
-            int col = _config.BoardSize[0];
+            int col = 0;
             int playerTurn = 0;
+            ConsoleKeyInfo key;
             //generate players
             Piece[] player = new Piece[_config.Players];
             for (int i = 0; i < player.Length; i++)
@@ -166,8 +167,33 @@ namespace Bears_ConnectFour
             //game loop
             while (!win)
 	        {
-                _view.PrintBoard(_board,player[playerTurn]);
-	        }
+                _view.PrintBoard(_board,col,player[playerTurn]);
+                key = Console.ReadKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        col++;
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        col--;
+                        break;
+                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.Enter:
+                    case ConsoleKey.DownArrow:
+                        //code for placing piece
+                        _board.Grid[6-1, col] = player[playerTurn];
+                        break;
+                    case ConsoleKey.Escape:
+                        _view.PrintExitPrompt();
+                        break;
+                    default:
+                        break;
+                }
+                if (col < 0)
+                    col = _config.BoardWidth-1;
+                else if (col > _config.BoardWidth-1)
+                    col = 0;
+            }
         }
 
         #endregion
