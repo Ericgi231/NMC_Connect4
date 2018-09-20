@@ -11,6 +11,7 @@ namespace Bears_ConnectFour
         public enum MenuOption {
             START,
             OPTIONS,
+            STATS,
             EXIT
         };
 

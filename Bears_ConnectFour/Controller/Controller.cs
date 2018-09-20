@@ -86,7 +86,7 @@ namespace Bears_ConnectFour
         private void MainMenu()
         {
             Boolean alive = true;            
-            List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.START, Enums.MenuOption.OPTIONS, Enums.MenuOption.EXIT};
+            List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.START, Enums.MenuOption.OPTIONS, Enums.MenuOption.STATS, Enums.MenuOption.EXIT};
             int pointer = 0;
             ConsoleKeyInfo key;
             while (alive)
@@ -113,6 +113,10 @@ namespace Bears_ConnectFour
                             OptionsMenu();
 	                    }
                         else if(pointer == 2)
+                        {
+                            StatsMenu();
+                        }
+                        else if (pointer == 3)
                         {
                             _view.PrintExitPrompt();
                         }
@@ -152,6 +156,11 @@ namespace Bears_ConnectFour
                         pointer++;
                         break;
                     case ConsoleKey.RightArrow:
+                        if (pointer == 0)
+                        {
+                            MainMenu();
+                        }
+
                         //changes p1 color
                         if (pointer == 1 && _config.Colors[0] == ConsoleColor.Red)
 	                    {
@@ -214,10 +223,6 @@ namespace Bears_ConnectFour
                         if(pointer == 0){
                             MainMenu();
                         }
-                        else
-	                    {
-                            //do nothing
-	                    }
                         break;
                     case ConsoleKey.Escape:
                         _view.PrintExitPrompt();
@@ -235,9 +240,49 @@ namespace Bears_ConnectFour
         /// <summary>
         /// display stats Menu
         /// </summary>
-        private void StatsMenu()
+        private void StatsMenu(int winnerID = -1)
         {
-
+            Boolean alive = true;
+            List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.START, Enums.MenuOption.EXIT };
+            int pointer = 0;
+            ConsoleKeyInfo key;
+            _view.PrintStatsMenu(options, pointer);
+            while (alive)
+            {
+                _view.PrintMenu(options, pointer);
+                key = Console.ReadKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        pointer--;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        pointer++;
+                        break;
+                    case ConsoleKey.RightArrow:
+                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.Enter:
+                        //add code to process menu option selected here
+                        if (pointer == 0)
+                        {
+                            GameLoop();
+                        }
+                        else if (pointer == 1)
+                        {
+                            MainMenu();
+                        }
+                        break;
+                    case ConsoleKey.Escape:
+                        _view.PrintExitPrompt();
+                        break;
+                    default:
+                        break;
+                }
+                if (pointer < 0)
+                    pointer = options.Count() - 1;
+                else if (pointer > options.Count() - 1)
+                    pointer = 0;
+            }
         }
 
         //calls game loop
