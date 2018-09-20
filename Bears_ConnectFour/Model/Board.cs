@@ -38,6 +38,7 @@ namespace Bears_ConnectFour
         /// <returns>winning Pieces id</returns>
         public int CheckWin(int row, int col)
         {
+            
             int idToMatch = Grid[row, col].Id;
             int matchingPieces = 1;
             bool win = false;
@@ -47,72 +48,218 @@ namespace Bears_ConnectFour
 
             while (!win)
             {
+                //
                 // Check Horizontal
-                for (int i = 0; i < counter; i++)
+                //
+                // reset matching pieces
+                matchingPieces = 1;
+                // Check right 
+                for (int i = 1; i < counter; i++)
                 {
-                    if (Grid[row, col + i].Id == idToMatch)
+                    try
                     {
-                        matchingPieces++;
+                        if (Grid[row, col + i].Id == idToMatch)
+                        {
+                            matchingPieces++;
+                            if (matchingPieces >= 4)
+                            {
+                                win = true;
+                                return idToMatch;
+                            }
+                        }
+                        else { break; }
                     }
-                    else { break; }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                }
+                // Check left 
+                for (int i = 1; i < counter; i++)
+                {
+                    try
+                    {
+                        if (Grid[row, col - i].Id == idToMatch)
+                        {
+                            matchingPieces++;
+                            if (matchingPieces >= 4)
+                            {
+                                win = true;
+                                return idToMatch;
+                            }
+                        }
+                        else { break; }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
                 }
 
-                // Check left
-                for (int i = 0; i < counter; i++)
-                {
-                    if (Grid[row, col - i].Id == idToMatch)
-                    {
-                        matchingPieces++;
-                    }
-                    else { break; }
-                }
 
-                if (matchingPieces >= 4)
-                {
-                    win = true;
-                }
+
 
 
                 //
                 // Check Vertical
                 //
+                // reset matching pieces
+                matchingPieces = 1;
+                // Check up 
+                for (int i = 1; i < counter; i++)
+                {
+                    try
+                    {
+                        if (Grid[row - i, col].Id == idToMatch)
+                        {
+                            matchingPieces++;
+                            if (matchingPieces >= 4)
+                            {
+                                win = true;
+                                return idToMatch;
+                            }
+                        }
+                        else { break; }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                    
+                }
+                // Check down 
+                for (int i = 1; i < counter; i++)
+                {
+                    try
+                    {
+                        if (Grid[row + i, col].Id == idToMatch)
+                        {
+                            matchingPieces++;
+                            if (matchingPieces >= 4)
+                            {
+                                win = true;
+                                return idToMatch;
+                            }
+                        }
+                        else { break; }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                }
+
+
+
 
 
                 //
                 // Check Diag 1
                 //
+                // reset matching pieces
+                matchingPieces = 1;
+                // Check up and right
+                for (int i = 1; i < counter; i++)
+                {
+                    try
+                    {
+                        if (Grid[row - i, col + i].Id == idToMatch)
+                        {
+                            matchingPieces++;
+                            if (matchingPieces >= 4)
+                            {
+                                win = true;
+                                return idToMatch;
+                            }
+                        }
+                        else { break; }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                    
+                }
+                // Check down and left 
+                for (int i = 1; i < counter; i++)
+                {
+                    try
+                    {
+                        if (Grid[row + i, col - i].Id == idToMatch)
+                        {
+                            matchingPieces++;
+                            if (matchingPieces >= 4)
+                            {
+                                win = true;
+                                return idToMatch;
+                            }
+                        }
+                        else { break; }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                }
+
+
+
 
 
                 //
                 // Check Diag 2
                 //
-            }
-
-
-
-
-
-
-
-
-
-
-
-            //
-            // Check Vertical
-            //
-            // reset matching pieces
-            matchingPieces = 1;
-
-
-            if (win == true)
-            {
-                return idToMatch;
-            }
-            else
-            {
+                // reset matching pieces
+                matchingPieces = 1;
+                // Check up and left
+                for (int i = 1; i < counter; i++)
+                {
+                    // Bound check
+                    try
+                    {
+                        if (Grid[row - i, col - i].Id == idToMatch)
+                        {
+                            matchingPieces++;
+                            if (matchingPieces >= 4)
+                            {
+                                win = true;
+                                return idToMatch;
+                            }
+                        }
+                        else { break; }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                    
+                }
+                // Check down and right 
+                for (int i = 1; i < counter; i++)
+                {
+                    try
+                    {
+                        if (Grid[row + i, col + i].Id == idToMatch)
+                        {
+                            matchingPieces++;
+                            if (matchingPieces >= 4)
+                            {
+                                win = true;
+                                return idToMatch;
+                            }
+                        }
+                        else { break; }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                    
+                }
                 return -1;
             }
+            
+            return idToMatch;   
         }
     }
 }
