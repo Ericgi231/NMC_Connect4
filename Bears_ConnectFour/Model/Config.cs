@@ -30,10 +30,10 @@ namespace Bears_ConnectFour
         /// </summary>
         private void SetDefaultConfig()
         {
-            Players = 3;
-            Colors = new ConsoleColor[3] { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.White};
-            Icons = new Char[3] { 'O', 'O', ' '};
-            IsComputer = new Boolean[3] { false, false, false};
+            Players = 2;
+            Colors = new ConsoleColor[2] { ConsoleColor.Red, ConsoleColor.Green};
+            Icons = new Char[2] { 'O', 'O'};
+            IsComputer = new Boolean[2] { false, false};
             BoardWidth = 7;
             BoardHeight = 6;
         }

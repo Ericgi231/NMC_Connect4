@@ -29,8 +29,6 @@ namespace Bears_ConnectFour
 
         #region methods
 
-
-
         /// <summary>
         /// build the view
         /// </summary>
@@ -283,7 +281,7 @@ namespace Bears_ConnectFour
                             if (_board.Grid[i - 1, col].Id == -1)
                             {
                                 _board.Grid[i - 1, col] = players[playerTurn];
-                                winnerId = _board.CheckWin(i - 1, col);
+                                //winnerId = _board.CheckWin(i - 1, col);
                                 break;
                             }
                         }

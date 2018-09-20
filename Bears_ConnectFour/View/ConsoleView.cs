@@ -18,8 +18,10 @@ namespace Bears_ConnectFour
         #region constructors
         public ConsoleView()
         {
+            Console.Title = ConsoleConfig.windowTitle;
+            Console.SetWindowSize(ConsoleConfig.windowWidth, ConsoleConfig.windowHeight);
+            Console.SetBufferSize(ConsoleConfig.windowWidth, ConsoleConfig.windowHeight);
             Console.CursorVisible = false;
-
         }
         #endregion
 

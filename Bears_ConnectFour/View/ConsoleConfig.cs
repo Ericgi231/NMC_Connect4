@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bears_ConnectFour.View
+namespace Bears_ConnectFour
 {
     /// <summary>
     /// Struct to store the initial settings for the console window
@@ -25,7 +25,7 @@ namespace Bears_ConnectFour.View
         public const ConsoleColor bodyBackgroundColor = ConsoleColor.Black;
         public const ConsoleColor bodyForegroundColor = ConsoleColor.White;
 
-        public const string windowTitle = " - set window title - ";
+        public const string windowTitle = " - Connect4 by Eric, Kevin, & Connor - ";
 
         public const int displayHorizontalMargin = 3;
     }
