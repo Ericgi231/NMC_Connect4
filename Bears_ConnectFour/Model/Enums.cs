@@ -13,5 +13,16 @@ namespace Bears_ConnectFour
             OPTIONS,
             EXIT
         };
+
+        public enum OptionsMenuOption{
+            BACK,
+            P1_ICON,
+            P1_COLOR,
+            P2_ICON,
+            P2_COLOR,
+            BOARD_HEIGHT,
+            BOARD_WIDTH
+
+        }
     }
 }

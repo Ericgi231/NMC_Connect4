@@ -94,6 +94,7 @@ namespace Bears_ConnectFour
         public void PrintMenu(List<Enums.MenuOption> options, int pointer)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(TITLE);
             Console.WriteLine();
             Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
@@ -106,22 +107,59 @@ namespace Bears_ConnectFour
             }
         }
 
-        public void PrintOptionMenu(){
-
-        }
-
-        public void DrawLoop(int count){
-            
+        public void PrintOptionsMenu(List<Enums.OptionsMenuOption> options, int pointer, Config piece)
+        {
             Console.Clear();
-
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(TITLE);
+            Console.WriteLine();
+            Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+            int j = 0;            
+            for (int i = 0; i < options.Count; i++)
+            {
+                if (i <= 2 && i >= 1 )
+	            {
+                    j = 0;
+	            }else if (i >= 3 && i <= 4)
+                {
+                    j = 1;
+	            }
+                else
+                {
+                    j = 2;
+                }
 
-            Console.WriteLine("hello " + count);
-            
-            Console.ReadKey();
-
-            
+                if (i == pointer)
+                {
+                    if (pointer == 0){
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("> " + options[0]);
+                    }
+                    else if (pointer == 1){
+                        Console.ForegroundColor = piece.Colors[j];
+                        Console.WriteLine("> " + options[1] + ":  " + piece.Icons[j]);
+                    }
+                    else if (pointer == 2){
+                        Console.ForegroundColor = piece.Colors[j];
+                        Console.WriteLine("> " + options[2] + ":  " + piece.Icons[j]);
+                    }
+                    else if (pointer == 3){
+                        Console.ForegroundColor = piece.Colors[j];
+                        Console.WriteLine("> " + options[3] + ":  " + piece.Icons[j]);
+                    }
+                    else if (pointer == 4){
+                        Console.ForegroundColor = piece.Colors[j];
+                        Console.WriteLine("> " + options[4] + ":  " + piece.Icons[j]);
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = piece.Colors[j];
+                    Console.WriteLine(" " + options[i] + " " + piece.Icons[j]);
+                }        
+            }
         }
+
         #endregion
     }
 }

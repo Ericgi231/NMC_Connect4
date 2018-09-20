@@ -112,7 +112,7 @@ namespace Bears_ConnectFour
                         }
                         else if(pointer == 1)
 	                    {
-                            _view.PrintOptionMenu();
+                            OptionsMenu();
 	                    }
                         else if(pointer == 2)
                         {
@@ -137,7 +137,101 @@ namespace Bears_ConnectFour
         /// </summary>
         private void OptionsMenu()
         {
+            Boolean alive = true;            
+            List<Enums.OptionsMenuOption> options = new List<Enums.OptionsMenuOption> {Enums.OptionsMenuOption.BACK, Enums.OptionsMenuOption.P1_COLOR, Enums.OptionsMenuOption.P1_ICON, Enums.OptionsMenuOption.P2_COLOR, Enums.OptionsMenuOption.P2_ICON};
+            int pointer = 0;
+            ConsoleKeyInfo key;
+            while (alive)
+            {                
+                _view.PrintOptionsMenu(options,pointer, _config);
+                key = Console.ReadKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        pointer--;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        pointer++;
+                        break;
+                    case ConsoleKey.RightArrow:
+                        //changes p1 color
+                        if (pointer == 1 && _config.Colors[0] == ConsoleColor.Red)
+	                    {
+                            _config.EditPlayer(0, ConsoleColor.Blue, _config.Icons[0], false);
+	                    }
+                        else if (pointer == 1 && _config.Colors[0] == ConsoleColor.Blue)
+	                    {
+                            _config.EditPlayer(0, ConsoleColor.Green, _config.Icons[0], false);
+	                    }
+                        else if (pointer == 1 && _config.Colors[0] == ConsoleColor.Green)
+	                    {
+                            _config.EditPlayer(0, ConsoleColor.Red, _config.Icons[0], false);
+	                    }
 
+                        //changes p1 icon
+                        if (pointer == 2 && _config.Icons[0] == 'O')
+	                    {
+                            _config.EditPlayer(0, _config.Colors[0], 'X', false);
+	                    }
+                        else if (pointer == 2 && _config.Icons[0] == 'X')
+	                    {
+                            _config.EditPlayer(0,  _config.Colors[0], 'N', false);
+	                    }
+                        else if (pointer == 2 && _config.Icons[0] == 'N')
+	                    {
+                            _config.EditPlayer(0, _config.Colors[0], 'O', false);
+	                    }
+
+                        //changes p2 color
+                        else if (pointer == 3 && _config.Colors[1] == ConsoleColor.Red)
+	                    {
+                            _config.EditPlayer(1, ConsoleColor.Blue, _config.Icons[1], false);
+	                    }
+                        else if (pointer == 3 && _config.Colors[1] == ConsoleColor.Blue)
+	                    {
+                            _config.EditPlayer(1, ConsoleColor.Green, _config.Icons[1], false);
+	                    }
+                        else if (pointer == 3 && _config.Colors[1] == ConsoleColor.Green)
+	                    {
+                            _config.EditPlayer(1, ConsoleColor.Red, _config.Icons[1], false);
+	                    }
+
+                        //changes p2 icon                                      
+                        if (pointer == 4 && _config.Icons[1] == 'O')
+	                    {
+                            _config.EditPlayer(1, _config.Colors[1], 'X', false);
+	                    }
+                        else if (pointer == 4 && _config.Icons[1] == 'X')
+	                    {
+                            _config.EditPlayer(1,  _config.Colors[1], 'N', false);
+	                    }
+                        else if (pointer == 4 && _config.Icons[1] == 'N')
+	                    {
+                            _config.EditPlayer(1, _config.Colors[1], 'O', false);
+	                    }
+                        break;
+                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.Enter:
+                        //add code to process menu option selected here
+                        if(pointer == 0){
+                            MainMenu();
+                        }
+                        else
+	                    {
+                            //do nothing
+	                    }
+                        break;
+                    case ConsoleKey.Escape:
+                        _view.PrintExitPrompt();
+                        break;
+                    default:
+                        break;
+                }
+                if (pointer < 0)
+                    pointer = options.Count() - 1;
+                else if (pointer > options.Count() - 1)
+                    pointer = 0;
+            }
         }
 
         /// <summary>
