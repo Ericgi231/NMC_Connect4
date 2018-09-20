@@ -8,7 +8,7 @@ namespace Bears_ConnectFour
 {
     class ConsoleView
     {
-        const string TITLE = "  Connect 4    By: Eric Grant, Kevin Stout, Connor Hansen";
+        const string TITLE = "~ Connect 4 ~\nBy: Eric Grant, Kevin Stout, Connor Hansen";
 
         #region properties
         
@@ -21,6 +21,7 @@ namespace Bears_ConnectFour
             Console.Title = ConsoleConfig.windowTitle;
             Console.SetWindowSize(ConsoleConfig.windowWidth, ConsoleConfig.windowHeight);
             Console.SetBufferSize(ConsoleConfig.windowWidth, ConsoleConfig.windowHeight);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.CursorVisible = false;
         }
         #endregion
@@ -30,9 +31,7 @@ namespace Bears_ConnectFour
         public void PrintSplashScreen(){
             Console.WriteLine(TITLE);
             Console.WriteLine();
-            Console.WriteLine("This application is designed to allow two players to play ");
-            Console.WriteLine("a game of connect 4. The rules are the standard rules for the ");
-            Console.WriteLine("game with each player taking a turn.");
+            Console.WriteLine("This application is designed to allow two players to play a game of connect 4. The rules are the standard rules for the game with each player taking a turn.");
             Console.WriteLine();
             PrintContinuePrompt();
         }
@@ -128,13 +127,29 @@ namespace Bears_ConnectFour
             }
         }
 
+        public void PrintStatsMenu(List<Enums.MenuOption> options, int pointer)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Player Stats");
+            Console.WriteLine();
+            Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+            for (int i = 0; i < options.Count; i++)
+            {
+                if (i == pointer)
+                    Console.WriteLine("> " + options[i]);
+                else
+                    Console.WriteLine(" " + options[i]);
+            }
+        }
+
         public void PrintOptionsMenu(List<Enums.OptionsMenuOption> options, int pointer, Config piece)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(TITLE);
             Console.WriteLine();
-            Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+            Console.WriteLine("Use arrows to navigate.\nRight arrow to change style.\n");
 
             int j = 0;            
             for (int i = 0; i < options.Count; i++)
