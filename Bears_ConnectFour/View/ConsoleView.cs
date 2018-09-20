@@ -8,7 +8,7 @@ namespace Bears_ConnectFour
 {
     class ConsoleView
     {
-        const string TITLE = "  Connect 4    By: Eric Grant, Kevin Stout, Connor Hansen";
+        const string TITLE = "  Connect 4  By: Eric Grant, Kevin Stout, Connor Hansen";
 
         #region properties
         
@@ -134,7 +134,7 @@ namespace Bears_ConnectFour
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(TITLE);
             Console.WriteLine();
-            Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+            Console.WriteLine("Use UP and DOWN arrows to navigate.\nUse RIGHT arrow to change color or icons.\n");
 
             int j = 0;            
             for (int i = 0; i < options.Count; i++)
