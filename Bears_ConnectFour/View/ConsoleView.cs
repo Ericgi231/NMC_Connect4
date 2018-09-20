@@ -114,6 +114,7 @@ namespace Bears_ConnectFour
             Console.WriteLine(TITLE);
             Console.WriteLine();
             Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+
             int j = 0;            
             for (int i = 0; i < options.Count; i++)
             {
@@ -142,7 +143,7 @@ namespace Bears_ConnectFour
                     else if (pointer == 2){
                         Console.ForegroundColor = piece.Colors[j];
                         Console.WriteLine("> " + options[2] + ":  " + piece.Icons[j]);
-                    }
+	                }
                     else if (pointer == 3){
                         Console.ForegroundColor = piece.Colors[j];
                         Console.WriteLine("> " + options[3] + ":  " + piece.Icons[j]);
