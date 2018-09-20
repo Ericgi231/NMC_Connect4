@@ -31,7 +31,7 @@ namespace Bears_ConnectFour
         public void PrintSplashScreen(){
             Console.WriteLine(TITLE);
             Console.WriteLine();
-            Console.WriteLine("This application is designed to allow two players to play a game of connect 4. The rules are the standard rules for the game with each player taking a turn.");
+            Console.WriteLine("This application is designed to allow two players to play a game of connect 4. The rules are the \nstandard rules for the game with each player \ntaking a turn.");
             Console.WriteLine();
             PrintContinuePrompt();
         }
@@ -117,7 +117,7 @@ namespace Bears_ConnectFour
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(TITLE);
             Console.WriteLine();
-            Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+            Console.WriteLine("Use Up and Down arrows to navigate.\nSpace or Enter to select.\n");
             for (int i = 0; i < options.Count; i++)
             {
                 if (i == pointer)
@@ -133,7 +133,7 @@ namespace Bears_ConnectFour
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Player Stats");
             Console.WriteLine();
-            Console.WriteLine("Use Up and Down arrows to navigate.\nSpace to select.\n");
+            Console.WriteLine("Use Up and Down arrows to navigate.\nSpace or Enter to select.\n");
             for (int i = 0; i < options.Count; i++)
             {
                 if (i == pointer)
