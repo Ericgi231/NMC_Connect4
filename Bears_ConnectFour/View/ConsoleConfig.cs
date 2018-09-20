@@ -11,8 +11,8 @@ namespace Bears_ConnectFour
     /// </summary>
     public struct ConsoleConfig
     {
-        public const int windowWidth = 79;
-        public const int windowHeight = 25;
+        public const int windowWidth = 40;
+        public const int windowHeight = 10;
 
         public const int windowLeft = 20;
         public const int windowTop = 20;

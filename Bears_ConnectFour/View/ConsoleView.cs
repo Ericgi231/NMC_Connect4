@@ -62,31 +62,50 @@ namespace Bears_ConnectFour
         public void PrintBoard(Board board, int col, Piece player)
         {
             Console.Clear();
+            Console.WriteLine();
+
             //current piece location
+            Console.SetCursorPosition((ConsoleConfig.windowWidth / 2) - board.Grid.GetLength(1), Console.CursorTop);
             for (int i = 0; i < board.Grid.GetLength(1); i++)
             {
+                
                 if (i == col)
                 {
+                    
                     Console.ForegroundColor = player.Color;
-                    Console.Write(player.Icon);
+                    Console.Write(" " + player.Icon);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else
                 {
-                    Console.Write(" ");
+                    Console.Write("  ");
                 }
             }
             Console.WriteLine();
+            Console.WriteLine();
 
             //the game board
+            
             for (int r = 0; r < board.Grid.GetLength(0); r++)
             {
+                Console.SetCursorPosition((ConsoleConfig.windowWidth / 2) - board.Grid.GetLength(1), Console.CursorTop);
                 for (int c = 0; c < board.Grid.GetLength(1); c++)
                 {
+                    if (c == 0)
+                    {
+                        Console.Write("|");
+                    }
                     Console.ForegroundColor = board.Grid[r, c].Color;
                     Console.Write(board.Grid[r, c].Icon);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("|");
                 }
                 Console.WriteLine();
+            }
+            Console.SetCursorPosition((ConsoleConfig.windowWidth / 2) - board.Grid.GetLength(1), Console.CursorTop);
+            for (int i = 0; i < board.Grid.GetLength(1)*2+1; i++)
+            {
+                Console.Write("-");
             }
 
             //extra info
