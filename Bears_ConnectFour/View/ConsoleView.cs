@@ -133,7 +133,7 @@ namespace Bears_ConnectFour
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Player Stats");
             Console.WriteLine();
-            Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+            Console.WriteLine("Use Up and Down arrows to navigate.\nSpace to select.\n");
             for (int i = 0; i < options.Count; i++)
             {
                 if (i == pointer)
@@ -149,7 +149,7 @@ namespace Bears_ConnectFour
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(TITLE);
             Console.WriteLine();
-            Console.WriteLine("Use arrows to navigate.\nRight arrow to change style.\n");
+            Console.WriteLine("Use Up and Down arrows to navigate.\nRight arrow to change style.\n");
 
             int j = 0;            
             for (int i = 0; i < options.Count; i++)
