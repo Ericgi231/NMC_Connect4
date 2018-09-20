@@ -86,7 +86,7 @@ namespace Bears_ConnectFour
         private void MainMenu()
         {
             Boolean alive = true;            
-            List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.START, Enums.MenuOption.OPTIONS, Enums.MenuOption.STATS, Enums.MenuOption.EXIT};
+            List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.NEW_GAME, Enums.MenuOption.OPTIONS, Enums.MenuOption.STATS, Enums.MenuOption.EXIT};
             int pointer = 0;
             ConsoleKeyInfo key;
             while (alive)
@@ -243,13 +243,12 @@ namespace Bears_ConnectFour
         private void StatsMenu(int winnerID = -1)
         {
             Boolean alive = true;
-            List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.START, Enums.MenuOption.EXIT };
+            List<Enums.MenuOption> options = new List<Enums.MenuOption> { Enums.MenuOption.NEW_GAME, Enums.MenuOption.BACK };
             int pointer = 0;
             ConsoleKeyInfo key;
-            _view.PrintStatsMenu(options, pointer);
             while (alive)
             {
-                _view.PrintMenu(options, pointer);
+                _view.PrintStatsMenu(options, pointer, (Stats.Wins[0] + Stats.Wins[1] + Stats.Wins[2]));
                 key = Console.ReadKey();
                 switch (key.Key)
                 {
@@ -310,6 +309,9 @@ namespace Bears_ConnectFour
                 key = Console.ReadKey();
                 switch (key.Key)
                 {
+                    case ConsoleKey.H:
+                        _view.PrintHelp();
+                        break;
                     case ConsoleKey.RightArrow:
                         col++;
                         break;
@@ -360,7 +362,8 @@ namespace Bears_ConnectFour
 
             //when winner
             //go to stats screen with winnerId
-
+            Stats.Wins[winnerId]++;
+            StatsMenu();
 
         }
 

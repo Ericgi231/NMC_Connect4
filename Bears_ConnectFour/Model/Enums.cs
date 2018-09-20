@@ -9,9 +9,10 @@ namespace Bears_ConnectFour
     public static class Enums
     {
         public enum MenuOption {
-            START,
+            NEW_GAME,
             OPTIONS,
             STATS,
+            BACK,
             EXIT
         };
 
