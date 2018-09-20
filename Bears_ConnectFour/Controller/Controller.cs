@@ -326,10 +326,11 @@ namespace Bears_ConnectFour
                             if (_board.Grid[i - 1, col].Id == -1)
                             {
                                 _board.Grid[i - 1, col] = players[playerTurn];
-                                //winnerId = _board.CheckWin(i - 1, col);
+                                winnerId = _board.CheckWin(i - 1, col);
                                 break;
                             }
                         }
+                        
 
                         //alter current turn
                         if (winnerId == -1)
