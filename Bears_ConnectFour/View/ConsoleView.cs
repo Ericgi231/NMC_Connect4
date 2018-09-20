@@ -58,10 +58,23 @@ namespace Bears_ConnectFour
             
         }
 
+        public void PrintHelp()
+        {
+            Console.Clear();
+            Console.WriteLine("Left and right arrows to move piece.");
+            Console.WriteLine("Down arrow to place piece.");
+            Console.WriteLine("");
+            Console.WriteLine("The goal is to get four of you pieces in a row in any direction");
+            Console.WriteLine("Players take turns one after another. Each player should choose \ntheir piece and only controll that one.");
+            Console.WriteLine("");
+            Console.WriteLine("Press any key to return to the game.");
+            Console.ReadKey();
+        }
+
         public void PrintBoard(Board board, int col, Piece player)
         {
             Console.Clear();
-            Console.WriteLine();
+            Console.WriteLine(" H for help");
 
             //current piece location
             Console.SetCursorPosition((ConsoleConfig.windowWidth / 2) - board.Grid.GetLength(1), Console.CursorTop);
@@ -127,13 +140,28 @@ namespace Bears_ConnectFour
             }
         }
 
-        public void PrintStatsMenu(List<Enums.MenuOption> options, int pointer)
+        public void PrintStatsMenu(List<Enums.MenuOption> options, int pointer, int totalWins)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Player Stats");
             Console.WriteLine();
             Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
+
+            Console.WriteLine("Total Games Played: " + totalWins);
+            for (int i = 0; i < Stats.Wins.Length-1; i++)
+            {
+                Console.Write("Player " + i + " Wins: " + Stats.Wins[i]);
+                if (totalWins!=0)
+                {
+                    Console.Write(" ~ " + (Stats.Wins[i] / totalWins * 100) + "%");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Tied Games: " + Stats.Wins[2]);
+
+            Console.WriteLine();
+
             for (int i = 0; i < options.Count; i++)
             {
                 if (i == pointer)

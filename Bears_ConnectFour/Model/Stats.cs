@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Bears_ConnectFour
 {
-    struct Piece
+    static public class Stats
     {
-        public int Id;
-        public ConsoleColor Color;
-        public char Icon;
-        public bool IsComputer;
+        static public int[] Wins = new int[3] { 0,0,0};
     }
 }
