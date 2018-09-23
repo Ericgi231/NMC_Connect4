@@ -72,7 +72,7 @@ namespace Bears_ConnectFour
             Console.ReadKey();
         }
 
-        public void PrintBoard(Board board, int col, Piece player, bool win = false)
+        public void PrintBoard(Board board, int col, Piece player, int winner = -1)
         {
             Console.Clear();
             Console.WriteLine(" H for help");
@@ -124,9 +124,14 @@ namespace Bears_ConnectFour
 
             //extra info
             Console.SetCursorPosition((ConsoleConfig.windowWidth / 2) - board.Grid.GetLength(1), Console.CursorTop);
-            if (!win)
+            if (winner == -1)
             {
                 Console.WriteLine("Player " + (player.Id + 1) + "'s turn.");
+            }
+            else if (winner == 2)
+            {
+                Console.WriteLine("Tie game!");
+                Thread.Sleep(1000);
             }
             else
             {

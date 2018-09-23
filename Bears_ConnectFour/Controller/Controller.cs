@@ -346,7 +346,7 @@ namespace Bears_ConnectFour
                         }
                         else
                         {
-                            _view.PrintBoard(_board, col, players[playerTurn], win = true);
+                            _view.PrintBoard(_board, col, players[playerTurn], winnerId);
                             win = true;
                         }
 
