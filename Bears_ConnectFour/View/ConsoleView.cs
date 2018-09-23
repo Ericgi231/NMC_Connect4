@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Bears_ConnectFour
@@ -31,7 +32,7 @@ namespace Bears_ConnectFour
         public void PrintSplashScreen(){
             Console.WriteLine(TITLE);
             Console.WriteLine();
-            Console.WriteLine("This application is designed to allow two players to play a game of connect 4. The rules are the standard rules for the game with each player taking a turn.");
+            Console.WriteLine("This application is designed to allow two players to play a game of connect 4.\n\nThe rules are the standard rules for the game with each player taking a turn.");
             Console.WriteLine();
             PrintContinuePrompt();
         }
@@ -71,7 +72,7 @@ namespace Bears_ConnectFour
             Console.ReadKey();
         }
 
-        public void PrintBoard(Board board, int col, Piece player)
+        public void PrintBoard(Board board, int col, Piece player, bool win = false)
         {
             Console.Clear();
             Console.WriteLine(" H for help");
@@ -119,9 +120,19 @@ namespace Bears_ConnectFour
             {
                 Console.Write("-");
             }
+            Console.WriteLine();
 
             //extra info
-
+            Console.SetCursorPosition((ConsoleConfig.windowWidth / 2) - board.Grid.GetLength(1), Console.CursorTop);
+            if (!win)
+            {
+                Console.WriteLine("Player " + (player.Id + 1) + "'s turn.");
+            }
+            else
+            {
+                Console.WriteLine("Player " + (player.Id + 1) + " wins!");
+                Thread.Sleep(2000);
+            }
         }
 
         public void PrintMenu(List<Enums.MenuOption> options, int pointer)
@@ -151,7 +162,7 @@ namespace Bears_ConnectFour
             Console.WriteLine("Total Games Played: " + (Stats.Wins[0] + Stats.Wins[1] + Stats.Wins[2]));
             for (int i = 0; i < Stats.Wins.Length-1; i++)
             {
-                Console.Write("Player " + i + " Wins: " + Stats.Wins[i]);
+                Console.Write("Player " + (i + 1) + " Wins: " + Stats.Wins[i]);
                 Console.WriteLine();
             }
             Console.Write("Tied Games: " + Stats.Wins[2]);

@@ -284,7 +284,9 @@ namespace Bears_ConnectFour
             }
         }
 
-        //calls game loop
+        /// <summary>
+        /// main game loop
+        /// </summary>
         private void GameLoop(){
             InstantiateBoard();
             bool win = false;
@@ -344,6 +346,7 @@ namespace Bears_ConnectFour
                         }
                         else
                         {
+                            _view.PrintBoard(_board, col, players[playerTurn], win = true);
                             win = true;
                         }
 
