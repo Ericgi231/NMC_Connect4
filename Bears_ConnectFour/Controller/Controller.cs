@@ -248,7 +248,7 @@ namespace Bears_ConnectFour
             ConsoleKeyInfo key;
             while (alive)
             {
-                _view.PrintStatsMenu(options, pointer, (Stats.Wins[0] + Stats.Wins[1] + Stats.Wins[2]));
+                _view.PrintStatsMenu(options, pointer);
                 key = Console.ReadKey();
                 switch (key.Key)
                 {
@@ -333,7 +333,6 @@ namespace Bears_ConnectFour
                             }
                         }
                         
-
                         //alter current turn
                         if (winnerId == -1)
                         {
@@ -347,6 +346,7 @@ namespace Bears_ConnectFour
                         {
                             win = true;
                         }
+
                         break;
                     case ConsoleKey.Escape:
                         _view.PrintExitPrompt();

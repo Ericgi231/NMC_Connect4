@@ -45,6 +45,19 @@ namespace Bears_ConnectFour
             int counter = 4;
 
             // TODO create function to dynamically pull Grid upper/lower bound for bound check
+            //check for a tie
+            int emptySpaces = Grid.Length;
+            foreach (Piece piece in Grid)
+            {
+                if (piece.Id != -1)
+                {
+                    emptySpaces--;
+                }
+            }
+            if (emptySpaces == 0)
+            {
+                return 2;
+            }
 
             while (!win)
             {
@@ -258,7 +271,8 @@ namespace Bears_ConnectFour
                 }
                 return -1;
             }
-            
+
+
             return idToMatch;   
         }
     }

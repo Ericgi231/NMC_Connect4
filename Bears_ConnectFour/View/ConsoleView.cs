@@ -140,7 +140,7 @@ namespace Bears_ConnectFour
             }
         }
 
-        public void PrintStatsMenu(List<Enums.MenuOption> options, int pointer, int totalWins)
+        public void PrintStatsMenu(List<Enums.MenuOption> options, int pointer)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
@@ -148,17 +148,14 @@ namespace Bears_ConnectFour
             Console.WriteLine();
             Console.WriteLine("Use arrows to navigate.\nSpace to select.\n");
 
-            Console.WriteLine("Total Games Played: " + totalWins);
+            Console.WriteLine("Total Games Played: " + (Stats.Wins[0] + Stats.Wins[1] + Stats.Wins[2]));
             for (int i = 0; i < Stats.Wins.Length-1; i++)
             {
                 Console.Write("Player " + i + " Wins: " + Stats.Wins[i]);
-                if (totalWins!=0)
-                {
-                    Console.Write(" ~ " + (Stats.Wins[i] / totalWins * 100) + "%");
-                }
                 Console.WriteLine();
             }
-            Console.WriteLine("Tied Games: " + Stats.Wins[2]);
+            Console.Write("Tied Games: " + Stats.Wins[2]);
+            Console.WriteLine();
 
             Console.WriteLine();
 

@@ -8,6 +8,6 @@ namespace Bears_ConnectFour
 {
     static public class Stats
     {
-        static public int[] Wins = new int[3] { 0,0,0};
+        static public int[] Wins = new int[3] { 0, 0, 0 };
     }
 }
