@@ -374,3 +374,10 @@ namespace Bears_ConnectFour
 
     }
 }
+
+
+//Hello Bruce!!! 
+// Hello Courtney!!!!
+
+//Hello! this is way to cool! 
+//this will realy help for at home coding
